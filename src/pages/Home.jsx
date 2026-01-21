@@ -1,5 +1,6 @@
 import React from "react";
 import bannerImg from "../assets/Banner.jpg";
+import { motion } from "framer-motion";
 import {
   FaBook,
   FaUserGraduate,
@@ -7,35 +8,79 @@ import {
   FaDeskpro,
 } from "react-icons/fa";
 
+const floating = {
+  animate: {
+    y: [0, -15, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
 const Home = () => {
   return (
-    <div className="w-full flex justify-center mt-10">
-      <div className="relative w-11/12">
+    <div className="w-full flex justify-center mt-24">
+      <div className="relative w-[800px] h-[400px] flex items-center justify-center">
 
-        {/* Banner Image */}
-        <img
+        {/* Image */}
+        <motion.img
           src={bannerImg}
           alt="banner"
-          className="w-full h-[320px] object-cover rounded-xl"
+          // initial={{ scale: 0.9, opacity: 0 }}
+          // animate={{ scale: 1, opacity: 1 }}
+          // transition={{ duration: 1 }}
+          className="w-full h-full object-cover rounded-2xl"
+         
         />
 
-        {/* Icons */}
-        <div className="absolute -top-6 left-10 bg-white p-3 rounded-full shadow-lg text-blue-600 text-2xl">
-          <FaBook />
-        </div>
+        {/* Orbit animation */}
+        <motion.div
+          className="absolute w-full h-full flex items-center justify-center"
+          animate={{ rotate: 360 }}
+          transition={{
+            repeat: Infinity,
+            duration: 18,
+            ease: "linear",
+          }}
+        >
+          {/* Icon 1 */}
+          <motion.div
+            variants={floating}
+            animate="animate"
+            className="absolute -top-6 bg-white p-4 rounded-full shadow-xl text-blue-600 text-2xl"
+          >
+            <FaBook />
+          </motion.div>
 
-        <div className="absolute top-1/2 -left-6 bg-white p-3 rounded-full shadow-lg text-green-600 text-2xl">
-          <FaUserGraduate />
-        </div>
+          {/* Icon 2 */}
+          <motion.div
+            variants={floating}
+            animate="animate"
+            className="absolute right-[-20px] bg-white p-4 rounded-full shadow-xl text-green-600 text-2xl"
+          >
+            <FaUserGraduate />
+          </motion.div>
 
-        <div className="absolute top-1/2 -right-6 bg-white p-3 rounded-full shadow-lg text-purple-600 text-2xl">
-          <FaBookReader />
-        </div>
+          {/* Icon 3 */}
+          <motion.div
+            variants={floating}
+            animate="animate"
+            className="absolute bottom-[-20px] bg-white p-4 rounded-full shadow-xl text-purple-600 text-2xl"
+          >
+            <FaBookReader />
+          </motion.div>
 
-        <div className="absolute -bottom-6 right-10 bg-white p-3 rounded-full shadow-lg text-orange-600 text-2xl">
-          <FaDeskpro />
-        </div>
-
+          {/* Icon 4 */}
+          <motion.div
+            variants={floating}
+            animate="animate"
+            className="absolute left-[-20px] bg-white p-4 rounded-full shadow-xl text-orange-600 text-2xl"
+          >
+            <FaDeskpro />
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );
