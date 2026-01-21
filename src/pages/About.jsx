@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUserTie, FaGraduationCap, FaAward } from 'react-icons/fa';
-import instructorPic from "../assets/instructorPic.jpg"; 
+import instructorPic from "../assets/instructorPic-2.jpg"; 
 
 const About = () => {
   return (
@@ -20,7 +20,7 @@ const About = () => {
           <div className="relative w-64 h-80 md:w-80 md:h-[450px] rounded-3xl overflow-hidden border-4 border-[#f1a92a] shadow-2xl z-10">
             <img 
               src={instructorPic} 
-              alt="Khursed Alom Manik Sir" 
+              alt="Khurshed Alom Manik Sir" 
               className="w-full h-full object-cover"
             />
           </div>
@@ -86,7 +86,7 @@ const About = () => {
           {/* Instructor Info */}
           <div className="flex flex-col gap-2">
             <span className="text-cyan-600 dark:text-cyan-400 font-bold tracking-widest uppercase text-xs">Lead Instructor</span>
-            <h2 className="text-4xl font-black text-gray-900 dark:text-white">Khursed Alom Manik</h2>
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white">Khurshed Alom Manik</h2>
             <div className="flex items-center justify-center lg:justify-start gap-2 mt-2">
               <FaGraduationCap className="text-red-500" />
               <span className="text-red-600 dark:text-red-400 font-semibold italic text-lg">
