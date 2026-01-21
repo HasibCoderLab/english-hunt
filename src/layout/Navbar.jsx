@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.jpg";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaSun } from "react-icons/fa";
 
