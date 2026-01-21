@@ -2,9 +2,10 @@ import React from 'react'
 import { Route, Routes } from "react-router";
 import Home from './pages/home';
 import About from './pages/about';
-import Services from './pages/Services';
+import Courses from './pages/Courses';
 import Contact from './pages/Contact';
 import Navbar from './layout/Navbar';
+import Footer from './layout/Footer';
 
 const App = () => {
   return (
@@ -15,10 +16,11 @@ const App = () => {
 <Routes>
   <Route  path="/" element={<Home/>} />
   <Route path="/about" element={<About/>} />
-  <Route path="/services" element={<Services/>} />
+  <Route path="/courses" element={<Courses/>} />
   <Route path="/contact" element={<Contact/>} />
 
 </Routes>
+<Footer/>
       </>
 
   )
