@@ -32,11 +32,11 @@ const Contact = () => {
                 </div>
                 <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
                   <div className="p-3 bg-teal-500/10 text-teal-500 rounded-full"><FaEnvelope /></div>
-                  <span className="font-semibold">maniksir.english@gmail.com</span>
+                  <span className="font-semibold">khurshidmanik22@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
                   <div className="p-3 bg-blue-500/10 text-blue-500 rounded-full"><FaMapMarkerAlt /></div>
-                  <span className="font-semibold">Dhaka, Bangladesh</span>
+                  <span className="font-semibold">Kathal Bagicha,Chapai Nawabganj </span>
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@ const Contact = () => {
             <div className="w-full h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
               <iframe 
                 title="Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116833.8318788335!2d90.337288!3d23.7808875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.818039843539!2d88.26895027357068!3d24.59547515581313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fbb7d8392baab3%3A0xa51d0d462a99f91a!2sDadu%20Bhai%20Communication!5e0!3m2!1sen!2sbd!4v1769017841925!5m2!1sen!2sbd"
                 className="w-full h-full grayscale dark:invert-[0.9] dark:hue-rotate-180"
                 style={{ border: 0 }}
                 allowFullScreen=""
@@ -65,9 +65,12 @@ const Contact = () => {
                 <input type="text" placeholder="First Name" className="w-1/2 bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all" />
                 <input type="text" placeholder="Last Name" className="w-1/2 bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all" />
               </div>
-              <input type="email" placeholder="Email Address" className="w-full bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all" />
-              <textarea placeholder="Write Your Message" rows="4" className="w-full bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all resize-none"></textarea>
-              <button className="w-full bg-[#f1a92a] hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-95 uppercase tracking-widest">
+              <input type="email" placeholder="Email Address"
+               className="w-full bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all" />
+              <textarea placeholder="Write Your Message" rows="4"
+               className="w-full bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all resize-none"></textarea>
+              <button 
+              className="w-full bg-[#f1a92a] hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-95 uppercase tracking-widest">
                 Send Message
               </button>
             </form>

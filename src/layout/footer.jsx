@@ -34,10 +34,11 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="flex items-center gap-8 mt-4">
-          <SocialIcon icon={FaFacebook} color="text-blue-600" label="Facebook" link="https://facebook.com" />
+          <SocialIcon icon={FaFacebook} color="text-blue-600" label="Facebook"
+           link="https://www.facebook.com/profile.php?id=61578104262155" />
           <SocialIcon icon={FaYoutube} color="text-red-600" label="YouTube" link="https://youtube.com" />
           <SocialIcon icon={FaLinkedin} color="text-blue-400" label="LinkedIn" link="#" />
-          <SocialIcon icon={FaGithub} color="text-gray-800 dark:text-white" label="GitHub" link="https://github.com/HasibCoderLab" />
+       
         </div>
 
         {/* Copyright */}

@@ -2,79 +2,96 @@ import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.jpg";
 import { NavLink } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { FaSun } from "react-icons/fa";
-
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
+
+ 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "auto";
-  }, [isOpen]);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  
 
   const linkStyle = ({ isActive }) =>
-    `uppercase text-xs md:text-sm tracking-widest font-semibold transition-colors duration-300
-     ${isActive ? "text-[#f1a92a]" : "text-gray-400 hover:text-white"}`;
+    `relative uppercase text-[11px] md:text-[13px] tracking-[0.15em] font-bold transition-all duration-300
+     ${isActive ? "text-[#f1a92a]" : "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white"}
+     group flex flex-col items-center`;
 
   return (
-    <nav className="fixed top-4 left-0 right-0 z-[100] px-4">
-      <div className="mx-auto max-w-5xl bg-[#0a0a1a]/90 backdrop-blur-xl border border-gray-800 px-6 py-3 rounded-full flex items-center justify-between shadow-xl relative">
-
-        {/* Logo */}
-        <NavLink to="/" onClick={() => setIsOpen(false)}>
+    <nav className="fixed top-0 left-0 right-0 z-[100] px-4 pt-6 transition-all duration-500">
+      <div 
+        className={`mx-auto max-w-5xl px-6 py-3 rounded-full flex items-center justify-between transition-all duration-500 relative
+          ${scrolled 
+            ? "bg-white/70 dark:bg-[#0a0a1a]/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] border border-[#f1a92a]/30" 
+            : "bg-white/40 dark:bg-white/5 backdrop-blur-md border border-white/20 shadow-none"}
+        `}
+      >
+        
+        {/* Logo Section with Glowing Ring */}
+        <NavLink to="/" onClick={() => setIsOpen(false)} className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#f1a92a] to-teal-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
           <img
             src={logo}
             alt="Logo"
-            className="h-9 w-9 rounded-full border border-gray-700 object-cover"
+            className="relative h-10 w-10 rounded-full border-2 border-white dark:border-gray-800 object-cover"
           />
         </NavLink>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <NavLink to="/" className={linkStyle}>Home</NavLink>
-          <NavLink to="/about" className={linkStyle}>About</NavLink>
-          <NavLink to="/courses" className={linkStyle}>Courses</NavLink>
-          <NavLink to="/contact" className={linkStyle}>Contact</NavLink>
+        <div className="hidden md:flex items-center gap-10">
+          {[
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+            { name: "Courses", path: "/courses" },
+            { name: "Contact", path: "/contact" }
+          ].map((item) => (
+            <NavLink key={item.name} to={item.path} className={linkStyle}>
+              {item.name}
+              {/* Active Underline Animation */}
+              <span className="absolute -bottom-1 w-0 h-[2px] bg-[#f1a92a] transition-all duration-300 group-hover:w-full"></span>
+            </NavLink>
+          ))}
 
-          <span className="h-6 w-[1px] bg-gray-700"></span>
+          <div className="h-5 w-[1px] bg-gray-300 dark:bg-gray-700 mx-2"></div>
 
-          <button className="text-[#f1a92a] hover:scale-110 transition">
-            <FaSun />
-          </button>
+         
+         
         </div>
-        
 
-        {/* Mobile Button */}
-        <div className="md:hidden flex items-center gap-4">
-          <button className="text-[#f1a92a]">
-            <FaSun />
-          </button>
+        {/* Mobile Controls */}
+        <div className="md:hidden flex items-center gap-3">
+          
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white text-2xl"
+            className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-800
+             dark:text-white transition-all active:scale-90"
           >
-            {isOpen ? <HiX /> : <HiMenuAlt3 />}
+            {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Dropdown Menu */}
         <div
-          className={`absolute top-16 left-0 right-0 md:hidden transition-all duration-300
-          ${isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"}`}
+          className={`absolute top-20 left-4 right-4 md:hidden transition-all duration-500 ease-in-out
+          ${isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-10 scale-95 pointer-events-none"}`}
         >
-          <div className="bg-[#0a0a1a] border border-gray-800 rounded-3xl p-6 mx-2 flex flex-col items-center gap-5 shadow-2xl">
-            <NavLink to="/about" 
-            onClick={() => setIsOpen(false)} 
-            className={linkStyle}>About</NavLink>
-
-            <NavLink to="/courses" 
-            onClick={() => setIsOpen(false)} 
-
-            className={linkStyle}>Courses</NavLink>
-            <NavLink to="/contact" 
-
-            onClick={() => setIsOpen(false)} 
-            className={linkStyle}>Contact</NavLink>
+          <div className="bg-white/95 dark:bg-[#0a0a1a]/95 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 rounded-[2rem] p-8 flex flex-col items-center gap-6 shadow-2xl">
+            {["Home", "About", "Courses", "Contact"].map((label) => (
+              <NavLink 
+                key={label}
+                to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
+                onClick={() => setIsOpen(false)}
+                className="text-lg font-bold tracking-widest text-gray-800 dark:text-gray-200 hover:text-[#f1a92a] dark:hover:text-[#f1a92a] transition-colors"
+              >
+                {label}
+              </NavLink>
+            ))}
           </div>
         </div>
 
