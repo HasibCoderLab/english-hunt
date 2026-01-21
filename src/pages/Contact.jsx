@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'; // 
 
 const Contact = () => {
+  // WhatsApp Link Logic
+  const whatsappNumber = "01821323330"; 
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=Hello Sir, I want to know about your courses.`;
+
   return (
     <div className="min-h-screen w-full bg-white dark:bg-[#0a0a1a] transition-colors duration-500 pt-32 md:pt-40 px-4 pb-20">
       <div className="max-w-6xl mx-auto">
@@ -26,22 +30,41 @@ const Contact = () => {
             <div className="bg-gray-50 dark:bg-gray-900/50 p-6 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl">
               <h2 className="text-2xl font-bold text-teal-500 mb-6">Contact Information</h2>
               <div className="space-y-4">
+                
+                {/* Phone */}
                 <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
                   <div className="p-3 bg-[#f1a92a]/10 text-[#f1a92a] rounded-full"><FaPhoneAlt /></div>
                   <span className="font-semibold">01821323330</span>
                 </div>
+
+                {/* WhatsApp (New) */}
+                <a 
+                  href={whatsappUrl} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-green-500 transition-colors group"
+                >
+                  <div className="p-3 bg-green-500/10 text-green-500 rounded-full group-hover:bg-green-500 group-hover:text-white transition-all">
+                    <FaWhatsapp size={20} />
+                  </div>
+                  <span className="font-semibold">Chat on WhatsApp</span>
+                </a>
+
+                {/* Email */}
                 <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
                   <div className="p-3 bg-teal-500/10 text-teal-500 rounded-full"><FaEnvelope /></div>
                   <span className="font-semibold">khurshidmanik22@gmail.com</span>
                 </div>
+
+                {/* Location */}
                 <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
                   <div className="p-3 bg-blue-500/10 text-blue-500 rounded-full"><FaMapMarkerAlt /></div>
-                  <span className="font-semibold">Kathal Bagicha,Chapai Nawabganj </span>
+                  <span className="font-semibold">Kathal Bagicha, Chapai Nawabganj</span>
                 </div>
               </div>
             </div>
 
-            {/* Google Map Placeholder */}
+            {/* Google Map */}
             <div className="w-full h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
               <iframe 
                 title="Google Map"
@@ -69,8 +92,7 @@ const Contact = () => {
                className="w-full bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all" />
               <textarea placeholder="Write Your Message" rows="4"
                className="w-full bg-gray-800/50 text-white border border-gray-700 rounded-xl px-4 py-3 focus:border-[#f1a92a] outline-none transition-all resize-none"></textarea>
-              <button 
-              className="w-full bg-[#f1a92a] hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-95 uppercase tracking-widest">
+              <button className="w-full bg-[#f1a92a] hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform active:scale-95 uppercase tracking-widest cursor-pointer">
                 Send Message
               </button>
             </form>
@@ -78,6 +100,19 @@ const Contact = () => {
 
         </div>
       </div>
+
+      {/* Floating WhatsApp Button (Optionally Added for Better Experience) */}
+      <motion.a 
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        className="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 flex items-center justify-center hover:bg-[#128C7E] transition-all"
+      >
+        <FaWhatsapp size={30} />
+      </motion.a>
     </div>
   );
 };
