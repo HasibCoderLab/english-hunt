@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaFacebook, FaYoutube, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaYoutube, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
