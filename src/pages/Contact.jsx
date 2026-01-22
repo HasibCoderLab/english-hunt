@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'; // 
-import Footer from '../layout/Footer';
 
 const Contact = () => {
   // WhatsApp Link Logic
@@ -114,7 +113,6 @@ const Contact = () => {
       >
         <FaWhatsapp size={30} />
       </motion.a>
-      <Footer />
     </div>
   );
 };
