@@ -1,40 +1,89 @@
-import React from 'react';
-import { FaFacebook, FaYoutube, FaWhatsapp } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { FaFacebook, FaYoutube, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
-  return (
-    <footer className="w-full bg-gray-50 dark:bg-[#060612] border-t border-gray-200 dark:border-gray-800 py-12 transition-colors duration-500">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 items-center text-center md:text-left">
-        
-        {/* Brand Section */}
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            English <span className="text-[#f1a92a]">Hunt</span>
-          </h2>
-          <p className="mt-3 text-gray-500 dark:text-gray-400 text-sm">
-            Manik Sir-এর নির্দেশনায় ইংরেজি জয় করার সহজ যাত্রা।
-          </p>
-        </div>
+  const [time, setTime] = useState('');
 
-        {/* Quick Links */}
-        <div className="flex flex-wrap justify-center gap-6 font-semibold text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300">
-          <NavLink to="/" className="hover:text-[#f1a92a] transition">Home</NavLink>
-          <NavLink to="/courses" className="hover:text-[#f1a92a] transition">Courses</NavLink>
-          <NavLink to="/contact" className="hover:text-[#f1a92a] transition">Contact</NavLink>
+  useEffect(() => {
+    // Set initial time
+    setTime(new Date().toLocaleTimeString());
+    
+    // Update time every second
+    const timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+    
+    // Cleanup
+    return () => clearInterval(timer);
+  }, []);
+
+  const SocialIcon = ({ icon: Icon, color, label, link }) => (
+    <div className="relative group flex flex-col items-center">
+      <a 
+        href={link} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label={label}
+        className={`${color} text-3xl transition-transform duration-300 group-hover:scale-125`}
+      >
+        <Icon />
+      </a>
+      <span className="absolute -top-10 scale-0 group-hover:scale-100 bg-gray-800 text-white text-[10px] px-2 py-1 rounded transition-all duration-300 whitespace-nowrap">
+        {label}
+      </span>
+    </div>
+  );
+
+  return (
+    <footer className="w-full bg-gray-50 dark:bg-[#060611] border-t border-gray-200 dark:border-gray-800 py-10 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 px-4">
+        
+        {/* Digital Watch */}
+        <div className="bg-white dark:bg-gray-900 px-6 py-2 rounded-full border border-teal-500/30 shadow-[0_0_15px_rgba(20,184,166,0.2)]">
+          <span className="text-xl md:text-2xl font-mono font-bold text-teal-500 tracking-wider">
+            {time || '00:00:00'}
+          </span>
         </div>
 
         {/* Social Icons */}
-        <div className="flex justify-center md:justify-end gap-6 text-2xl text-gray-400">
-          <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-600 transition"><FaFacebook /></a>
-          <a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:text-red-600 transition"><FaYoutube /></a>
-          <a href="https://wa.me/01821323330" target="_blank" rel="noreferrer" className="hover:text-green-500 transition"><FaWhatsapp /></a>
+        <div className="flex items-center gap-8 mt-4">
+          <SocialIcon 
+            icon={FaFacebook} 
+            color="text-blue-600" 
+            label="Facebook"
+            link="https://www.facebook.com/profile.php?id=61578104262155" 
+          />
+          <SocialIcon 
+            icon={FaYoutube} 
+            color="text-red-600" 
+            label="YouTube" 
+            link="https://youtube.com" 
+          />
+          <SocialIcon 
+            icon={FaLinkedin} 
+            color="text-blue-400" 
+            label="LinkedIn" 
+            link="https://linkedin.com" 
+          />
         </div>
 
-      </div>
-
-      <div className="mt-10 pt-6 border-t border-gray-100 dark:border-gray-900 text-center text-xs text-gray-400">
-        © {new Date().getFullYear()} English Hunt with Manik Sir. All Rights Reserved.
+        {/* Copyright */}
+        <div className="text-center mt-6 space-y-1">
+          <p className="text-gray-600 dark:text-gray-400 font-medium text-sm">
+            © 2026 <span className="text-[#f1a92a] font-bold">English Hunt</span>. All rights reserved.
+          </p>
+          <p className="text-xs text-gray-500 dark:text-gray-500">
+            Designed & Developed By 
+            <a 
+              href="https://github.com/HasibCoderLab" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-1 text-teal-500 hover:underline font-bold"
+            >
+              Hasib Hasan
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

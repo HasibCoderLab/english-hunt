@@ -4,10 +4,11 @@ import { Route, Routes } from "react-router";
 import Home from './pages/Home.jsx';
 import Courses from './pages/Courses.jsx';
 import Contact from './pages/Contact.jsx';
-import Navbar from './layout/Navbar.jsx';
-
 import About from './pages/About.jsx';
-import Footer from './layout/Footer.jsx';
+
+import Navbar from "./layout/Navbar";
+// import Footer from "./layout/Footer"; 
+
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
 
       </Routes>
-     <Footer/>
+     {/* <Footer/> */}
     </>
 
   )
