@@ -53,7 +53,7 @@ const Contact = () => {
                 {/* Email */}
                 <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
                   <div className="p-3 bg-teal-500/10 text-teal-500 rounded-full"><FaEnvelope /></div>
-                  <span className="font-semibold">englishhunt@gmail.com</span>
+                  <span className="font-semibold">englishhunt25@gmail.com</span>
                 </div>
 
                 {/* Location */}
