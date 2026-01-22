@@ -5,7 +5,7 @@ import Home from './pages/Home.jsx';
 import Courses from './pages/Courses.jsx';
 import Contact from './pages/Contact.jsx';
 import Navbar from './layout/Navbar.jsx';
-import Footer from './layout/Footer.jsx';
+// import Footer from './layout/Footer.jsx';
 import About from './pages/About.jsx';
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
   <Route path="/contact" element={<Contact/>} />
 
 </Routes>
-<Footer/>
+{/* <Footer/> */}
       </>
 
   )
