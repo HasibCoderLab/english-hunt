@@ -72,9 +72,9 @@ const Navbar = () => {
           {/* Theme Toggle Button */}
           <button 
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-[#f1a92a] hover:rotate-360 transition-all duration-700 shadow-inner"
+            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-[#f1a92a] hover:rotate-360 transition-all duration-700 shadow-inner cursor-pointer"
           >
-            {darkMode ? <FaSun size={18} /> : <FaMoon size={18} className="text-gray-600" />}
+            {darkMode ? <FaSun size={18} /> : <FaMoon size={18} className="text-gray-600 " />}
           </button>
         </div>
 
@@ -82,9 +82,9 @@ const Navbar = () => {
         <div className="md:hidden flex items-center gap-3">
           <button 
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 text-[#f1a92a] transition-transform active:scale-90 cursor-pointer"
+            className="p-2 text-[#f1a92a] transition-transform active:scale-90 "
           >
-            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} className="text-gray-600" />}
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} className="text-gray-600 " />}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
