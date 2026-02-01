@@ -2,21 +2,30 @@ import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.jpg";
 import { NavLink } from "react-router-dom";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
 
-
- 
+  // Scroll ইফেক্ট (স্ক্রল করলে বর্ডার গ্লো করবে)
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  
+  // Dark Mode Logic
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   const linkStyle = ({ isActive }) =>
     `relative uppercase text-[11px] md:text-[13px] tracking-[0.15em] font-bold transition-all duration-300
@@ -60,17 +69,26 @@ const Navbar = () => {
 
           <div className="h-5 w-[1px] bg-gray-300 dark:bg-gray-700 mx-2"></div>
 
-         
-         
+          {/* Theme Toggle Button */}
+          <button 
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-[#f1a92a] hover:rotate-[360deg] transition-all duration-700 shadow-inner"
+          >
+            {darkMode ? <FaSun size={18} /> : <FaMoon size={18} className="text-gray-600" />}
+          </button>
         </div>
 
         {/* Mobile Controls */}
         <div className="md:hidden flex items-center gap-3">
-          
+          <button 
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 text-[#f1a92a] transition-transform active:scale-90"
+          >
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} className="text-gray-600" />}
+          </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-800
-             dark:text-white transition-all active:scale-90"
+            className="p-2 bg-gray-100 dark:bg-gray-800 rounded-full text-gray-800 dark:text-white transition-all active:scale-90"
           >
             {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
           </button>
