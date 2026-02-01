@@ -9,7 +9,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("theme") === "dark");
 
-  // Scroll ইফেক্ট (স্ক্রল করলে বর্ডার গ্লো করবে)
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -33,7 +33,7 @@ const Navbar = () => {
      group flex flex-col items-center`;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] px-4 pt-6 transition-all duration-500">
+    <nav className="fixed top-0 left-0 right-0 z-100 px-4 pt-6 transition-all duration-500">
       <div 
         className={`mx-auto max-w-5xl px-6 py-3 rounded-full flex items-center justify-between transition-all duration-500 relative
           ${scrolled 
@@ -44,7 +44,7 @@ const Navbar = () => {
         
         {/* Logo Section with Glowing Ring */}
         <NavLink to="/" onClick={() => setIsOpen(false)} className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#f1a92a] to-teal-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+          <div className="absolute -inset-1 bg-linear-to-r from-[#f1a92a] to-teal-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
           <img
             src={logo}
             alt="Logo"
@@ -63,16 +63,16 @@ const Navbar = () => {
             <NavLink key={item.name} to={item.path} className={linkStyle}>
               {item.name}
               {/* Active Underline Animation */}
-              <span className="absolute -bottom-1 w-0 h-[2px] bg-[#f1a92a] transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 w-0 h-0.5 bg-[#f1a92a] transition-all duration-300 group-hover:w-full"></span>
             </NavLink>
           ))}
 
-          <div className="h-5 w-[1px] bg-gray-300 dark:bg-gray-700 mx-2"></div>
+          <div className="h-5 w-px bg-gray-300 dark:bg-gray-700 mx-2"></div>
 
           {/* Theme Toggle Button */}
           <button 
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-[#f1a92a] hover:rotate-[360deg] transition-all duration-700 shadow-inner"
+            className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-[#f1a92a] hover:rotate-360 transition-all duration-700 shadow-inner"
           >
             {darkMode ? <FaSun size={18} /> : <FaMoon size={18} className="text-gray-600" />}
           </button>
@@ -82,7 +82,7 @@ const Navbar = () => {
         <div className="md:hidden flex items-center gap-3">
           <button 
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 text-[#f1a92a] transition-transform active:scale-90"
+            className="p-2 text-[#f1a92a] transition-transform active:scale-90 cursor-pointer"
           >
             {darkMode ? <FaSun size={20} /> : <FaMoon size={20} className="text-gray-600" />}
           </button>
@@ -99,7 +99,7 @@ const Navbar = () => {
           className={`absolute top-20 left-4 right-4 md:hidden transition-all duration-500 ease-in-out
           ${isOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-10 scale-95 pointer-events-none"}`}
         >
-          <div className="bg-white/95 dark:bg-[#0a0a1a]/95 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 rounded-[2rem] p-8 flex flex-col items-center gap-6 shadow-2xl">
+          <div className="bg-white/95 dark:bg-[#0a0a1a]/95 backdrop-blur-2xl border border-gray-200 dark:border-gray-800 rounded-4xl] p-8 flex flex-col items-center gap-6 shadow-2xl">
             {["Home", "About", "Courses", "Contact"].map((label) => (
               <NavLink 
                 key={label}
